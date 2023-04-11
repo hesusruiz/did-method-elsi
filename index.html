@@ -16,6 +16,20 @@
                     companyURL: "https://hesusruiz.github.io/hesusruiz",
                 },
             ],
+            authors: [
+                {
+                    name: "Jesus Ruiz",
+                    email: "hesusruiz@gmail.com",
+                    company: "JesusRuiz",
+                    companyURL: "https://hesusruiz.github.io/hesusruiz",
+                },
+                {
+                    name: "Alejandro Nieto",
+                    email: "alejandro.nieto@madisonmk.com",
+                    company: "DigitelTS",
+                    companyURL: "https://digitelts.es/",
+                },
+            ],
             github: "https://github.com/hesusruiz/did-method-elsi",
 
             localBiblio: {
@@ -163,13 +177,13 @@
             </p>
 
             <ul>
-                <li id="59.1">countryName
+                <li id="list_59.1">countryName
                 </li>
-                <li id="59.2">organizationName
+                <li id="list_59.2">organizationName
                 </li>
-                <li id="59.3"><strong>organizationIdentifier</strong>
+                <li id="list_59.3"><strong>organizationIdentifier</strong>
                 </li>
-                <li id="59.4">commonName
+                <li id="list_59.4">commonName
                 </li>
             </ul>
 
@@ -196,13 +210,13 @@
             </p>
 
             <ul>
-                <li id="80.1">3 character legal person identity type reference
+                <li id="list_80.1">3 character legal person identity type reference
                 </li>
-                <li id="80.2">2 character ISO 3166 [2] country code
+                <li id="list_80.2">2 character ISO 3166 [2] country code
                 </li>
-                <li id="80.3">hyphen-minus "-" (0x2D (ASCII), U+002D (UTF-8)) and
+                <li id="list_80.3">hyphen-minus "-" (0x2D (ASCII), U+002D (UTF-8)) and
                 </li>
-                <li id="80.4">identifier (according to country and identity type reference)
+                <li id="list_80.4">identifier (according to country and identity type reference)
                 </li>
             </ul>
 
@@ -210,15 +224,15 @@
             </p>
 
             <ol>
-                <li id="88.1">"VAT" for identification based on a national value added tax identification number.
+                <li id="list_88.1">"VAT" for identification based on a national value added tax identification number.
                 </li>
-                <li id="88.2">"NTR" for identification based on an identifier from a national trade register.
+                <li id="list_88.2">"NTR" for identification based on an identifier from a national trade register.
                 </li>
-                <li id="88.3">"PSD" for identification based on the national authorization number of a payment service provider under Payments Services Directive (EU) 2015/2366 [i.13]. This shall use the extended structure as defined in ETSI TS 119 495 [3], clause 5.2.1.
+                <li id="list_88.3">"PSD" for identification based on the national authorization number of a payment service provider under Payments Services Directive (EU) 2015/2366 [i.13]. This shall use the extended structure as defined in ETSI TS 119 495 [3], clause 5.2.1.
                 </li>
-                <li id="88.4">"LEI" for a global Legal Entity Identifier as specified in ISO 17442 [4]. The 2 character ISO 3166 [2] country code shall be set to 'XG'.
+                <li id="list_88.4">"LEI" for a global Legal Entity Identifier as specified in ISO 17442 [4]. The 2 character ISO 3166 [2] country code shall be set to 'XG'.
                 </li>
-                <li id="88.5">Two characters according to local definition within the specified country and name registration authority, identifying a national scheme that is considered appropriate for national and European level, followed by the character ":" (colon).
+                <li id="list_88.5">Two characters according to local definition within the specified country and name registration authority, identifying a national scheme that is considered appropriate for national and European level, followed by the character ":" (colon).
                 </li>
             </ol>
 
@@ -281,7 +295,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         with Verifiable Credentials, the legal entity has to become digital at least
         until it can digitally sign legally-binding documents.
         </p>
-        <p>So any person than can digitally sign a document using an advanced or
+        <p>So any legal person than can digitally sign a document using an advanced or
         qualified e-seal in the EU already has an ELSI DID without any further
         action, using the `organizationIdentifier` in the certificate
         used to sign.
@@ -346,9 +360,9 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         </p>
 
         <ul>
-            <li id="195.1">Extends the JSON Web Signatures specified in [[RFC7515]] by defining an additional set of JSON header parameters that can be incorporated in the JOSE Header.
+            <li id="list_195.1">Extends the JSON Web Signatures specified in [[RFC7515]] by defining an additional set of JSON header parameters that can be incorporated in the JOSE Header.
             </li>
-            <li id="195.2">Specifies the mechanisms for incorporating the above JSON components in JSON Web Signatures to build JAdES signatures, offering the same features as CAdES and XAdES in JSON syntax, and therefore fulfilling the same requirements.
+            <li id="list_195.2">Specifies the mechanisms for incorporating the above JSON components in JSON Web Signatures to build JAdES signatures, offering the same features as CAdES and XAdES in JSON syntax, and therefore fulfilling the same requirements.
             </li>
         </ul>
 
@@ -366,11 +380,11 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         </p>
 
         <ol>
-            <li id="209.1">Whether the certificate is qualified
+            <li id="list_209.1">Whether the certificate is qualified
             </li>
-            <li id="209.2">What is the type of this certificate
+            <li id="list_209.2">What is the type of this certificate
             </li>
-            <li id="209.3">Whether the corresponding private key is protected by a QSCD.
+            <li id="list_209.3">Whether the corresponding private key is protected by a QSCD.
             </li>
         </ol>
 
@@ -404,13 +418,13 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         </p>
 
         <ul>
-            <li id="233.1"> Any of the 30 million businesses in the EU is required by law to register with the appropriate national or international body before being able to engage in any relevant activity. During the process, an identifier is assigned to the business. The registration process and the way to obtain the identifier varies depending on the industry regulation (e.g., banking, telco, health, ...) and other factors.
+            <li id="list_233.1"> Any of the 30 million businesses in the EU is required by law to register with the appropriate national or international body before being able to engage in any relevant activity. During the process, an identifier is assigned to the business. The registration process and the way to obtain the identifier varies depending on the industry regulation (e.g., banking, telco, health, ...) and other factors.
             </li>
-            <li id="233.2"> The identities of businesses are public and anybody can access all related information from the relevant registries. Even if in some EU countries access is not free, it is public. Information includes many details about the business, including identifier, ownership and place of stablishment.
+            <li id="list_233.2"> The identities of businesses are public and anybody can access all related information from the relevant registries. Even if in some EU countries access is not free, it is public. Information includes many details about the business, including identifier, ownership and place of stablishment.
             </li>
-            <li id="233.3"> Businesses are required to include those identifiers in any relevant transaccion, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.
+            <li id="list_233.3"> Businesses are required to include those identifiers in any relevant transaccion, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.
             </li>
-            <li id="233.4"> Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and custodied by all businesses participating in the chain has to use the legally valid identifiers of each business.
+            <li id="list_233.4"> Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and custodied by all businesses participating in the chain has to use the legally valid identifiers of each business.
         </ul>
 
     </section>
