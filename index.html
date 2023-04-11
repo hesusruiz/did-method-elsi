@@ -83,7 +83,7 @@
     </p>
     <p>Natural persons MUST not use this DID method, or for that matter, any DID method that registers anything related to personal information in any type of Verifiable Registry or shared data store. See later the Appendix on a DID method for natural persons that can be used to complement the one for legal persons described here.
     </p>
-    <p>Any legal person than can digitally sign a document using an advanced or qualified e-signature valid in the EU has already a DID identifier under this method without any further action.
+    <p>Any legal person than can digitally sign a document using an advanced or qualified e-seal valid in the EU has already a DID identifier under this method without any further action.
     </p>
     <p>The identifiers in this DID method are based on the unique identifiers that are already used in the eIDAS certificates that comply to the relevant ETSI standards for electronic signatures and seals. This is in contrast to most other did methods, which invent identifiers and mechanims that are not well integrated with the legal framework and which are not in general legally recognised in the EU for economic transactions (e.g., that can be used in electronic invoices across the EU).
     </p>
@@ -93,11 +93,11 @@
 
 
 <section>
-    <h2> Introduction</h2>
+    <h2>Introduction</h2>
 
 
     <section>
-        <h2> Preface</h2>
+        <h2>Preface</h2>
 
         <p>The `elsi` DID method specification conforms to the requirements specified in the Decentralized Identifiers v1.0 Specification [[DID-CORE]]. For more information about DIDs and DID method specifications, please also see the [[?DID-PRIMER]]
         </p>
@@ -113,7 +113,7 @@
 
 
     <section>
-        <h2> Examples</h2>
+        <h2>Examples</h2>
 
         <p>Some example DIDs are the following:
         </p>
@@ -141,7 +141,7 @@
 
 
 <section>
-    <h2> The did:elsi format</h2>
+    <h2>The did:elsi format</h2>
 
     <p>The format for the `did:elsi` method conforms to the [[DID-CORE]] specification and is simple. It consists of the `did:elsi` prefix, followed by the `organizationIdentifier` field which is used in the eIDAS certificates for legal persons as defined in [[ETSI-LEGALPERSON]].
     </p>
@@ -152,7 +152,7 @@
 
 
     <section>
-        <h2> About the <code>organizationIdentifier</code></h2>
+        <h2>About the <code>organizationIdentifier</code></h2>
 
         <p>The [[ETSI-LEGALPERSON]] standard states about the `organizationIdentifier` field in the digital certificates for legal persons:
         </p>
@@ -240,7 +240,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
     <section>
-        <h2> Proving control of the DID</h2>
+        <h2>Proving control of the DID</h2>
 
         <p>When sending and receiving Verifiable Credentials, a legal person may be required to prove that it controls a DID included in the Verifiable Credential.
         </p>
@@ -261,16 +261,16 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
 <section>
-    <h2> DID method operations</h2>
+    <h2>DID method operations</h2>
 
         <p>The following section describes the DID operations for the did:elsi method. This DID Method is purely derivative, based on the current Trust Framework of eIDAS and so it does not require look ups in any additional registry.
         </p>
 
      <section>
-        <h2> Create</h2>
+        <h2>Create</h2>
 
         <p>If a legal person can digitally sign a document using an advanced or
-        qualified e-signature in the EU, then it already has a valid digital
+        qualified e-seal in the EU, then it already has a valid digital
         certificate. Digital certificates are provided by over 200 Trust Service
         Providers in the EU.
         </p>
@@ -282,7 +282,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         until it can digitally sign legally-binding documents.
         </p>
         <p>So any person than can digitally sign a document using an advanced or
-        qualified e-signature in the EU already has an ELSI DID without any further
+        qualified e-seal in the EU already has an ELSI DID without any further
         action, using the `organizationIdentifier` in the certificate
         used to sign.
         </p>
@@ -290,7 +290,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
     <section>
-        <h2> Read (Resolve)</h2>
+        <h2>Read (Resolve)</h2>
 
         <p>This DID Method is purely derivative, based on the current Trust Framework of eIDAS and so it does not require look ups in any additional registry, and the DID document does not have to contain a `verificationMethod` property.
         </p>
@@ -312,7 +312,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
     <section>
-        <h2> Update</h2>
+        <h2>Update</h2>
 
         <p>This DID method does not support updates. Management of the DID lifecycle and associated information (e.g., cyptographic material) is performed according to the eIDAS regulation and its implementatin.
         </p>
@@ -320,7 +320,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
     <section>
-        <h2> Deactivate (Revoke)</h2>
+        <h2>Deactivate (Revoke)</h2>
 
         <p>This DID method does not support deactivation. Management of the DID lifecycle and associated information (e.g., cyptographic material) is performed according to the eIDAS regulation and its implementatin.
         </p>
@@ -330,13 +330,13 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
 <section id="didresolution">
-    <h2> DID resolution and the verification of Verifiable Credentials</h2>
+    <h2>DID resolution and the verification of Verifiable Credentials</h2>
 
     <p>The main use case for this DID method is to use `did:elsi` identifiers in W3C Verifiable Credentials signed using JAdES digital signatures [[ETSI-JADES]], which is a specification for JSON Web Electronic Signatures or Seals fulfilling the requirements of the European Union eIDAS Regulation for advanced electronic signatures and seals and regulatory requirements for many different services.
     </p>
 
     <section>
-        <h2> JSON Advanced Electronic Signatures (JAdES)</h2>
+        <h2>JSON Advanced Electronic Signatures (JAdES)</h2>
 
         <p>The JAdES digital signature specification is based on JSON Web Signature and contains the features already defined in the related ETSI standards for AdES (advanced electronic signature/seal) applied to other data formats including XML, PDF and binary.
         </p>
@@ -356,7 +356,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
     <section>
-        <h2> Validation of the signature of Verifiable Credentials</h2>
+        <h2>Validation of the signature of Verifiable Credentials</h2>
 
         <p>The process of validation of verifiable credentials or verifiable presentations is composed of different individual validations, depending on several factors like type of credential and use case requirements.
         </p>
@@ -380,11 +380,11 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
 <section class="informative">
-    <h2> Security and privacy considerations</h2>
+    <h2>Security and privacy considerations</h2>
 
 
     <section>
-        <h2> Security considerations</h2>
+        <h2>Security considerations</h2>
 
         <p>When using this DID method and signing Verifiable Credentials with eIDAS certificates/seals using the JAdES format, the credential is essentially a signed document with the same security profile as any other document with an advanced signature in the eIDAS framework.
         </p>
@@ -394,7 +394,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 
     <section>
-        <h2> Privacy considerations</h2>
+        <h2>Privacy considerations</h2>
 
         <p>This DID method is only for legal persons. Natural persons MUST not use it, due to privacy considerations.
         </p>

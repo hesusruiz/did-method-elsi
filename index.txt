@@ -8,7 +8,7 @@ bibliography: bibliography.yaml
 
     Natural persons MUST not use this DID method, or for that matter, any DID method that registers anything related to personal information in any type of Verifiable Registry or shared data store. See later the Appendix on a DID method for natural persons that can be used to complement the one for legal persons described here.
 
-    Any legal person than can digitally sign a document using an advanced or qualified e-signature valid in the EU has already a DID identifier under this method without any further action.
+    Any legal person than can digitally sign a document using an advanced or qualified e-seal valid in the EU has already a DID identifier under this method without any further action.
 
     The identifiers in this DID method are based on the unique identifiers that are already used in the eIDAS certificates that comply to the relevant ETSI standards for electronic signatures and seals. This is in contrast to most other did methods, which invent identifiers and mechanims that are not well integrated with the legal framework and which are not in general legally recognised in the EU for economic transactions (e.g., that can be used in electronic invoices across the EU).
 
@@ -133,7 +133,7 @@ bibliography: bibliography.yaml
         ## Create
 
         If a legal person can digitally sign a document using an advanced or
-        qualified e-signature in the EU, then it already has a valid digital
+        qualified e-seal in the EU, then it already has a valid digital
         certificate. Digital certificates are provided by over 200 Trust Service
         Providers in the EU.
 
@@ -144,8 +144,8 @@ bibliography: bibliography.yaml
         with Verifiable Credentials, the legal entity has to become digital at least
         until it can digitally sign legally-binding documents.
 
-        So any person than can digitally sign a document using an advanced or
-        qualified e-signature in the EU already has an ELSI DID without any further
+        So any legal person than can digitally sign a document using an advanced or
+        qualified e-seal in the EU already has an ELSI DID without any further
         action, using the `organizationIdentifier` in the certificate
         used to sign.
 
