@@ -100,6 +100,9 @@ localBiblio:
         <ul>
             - Gaia-X: `did:elsi:VATBE-0762747721`
             - International Data Spaces: `did:elsi:VATDE-325984196`
+            - Alastria: `did:elsi:VATES-G87936159`
+            - IN2: `did:elsi:VATES-B60645900`
+            - Digitel TS: `did:elsi:VATES-B47447560`
             - FIWARE Foundation: `did:elsi:VATDE-309937516`
             - TNO: `did:elsi:LEIXG-724500AZSGBRY55MNS59`
 
@@ -169,8 +172,11 @@ localBiblio:
         Some examples of DIDs are:
 
         <pre .example title="Example ELSI Method DIDs">
-            International Data Spaces: did:elsi:VATDE-325984196
             Gaia-X: did:elsi:VATBE-0762747721
+            International Data Spaces: did:elsi:VATDE-325984196
+            Alastria: did:elsi:VATES-G87936159
+            IN2: did:elsi:VATES-B60645900
+            Digitel TS: did:elsi:VATES-B47447560
             FIWARE Foundation: did:elsi:VATDE-309937516
             TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59
 
