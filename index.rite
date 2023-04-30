@@ -266,6 +266,12 @@ localBiblio:
             - What is the type of this certificate
             - Whether the corresponding private key is protected by a QSCD.
 
+        To achieve a high level of trust in the validation, this can be delegated to Qualified Trust Service Providers (QTSPs) that offer services specifically for this purpose.
+
+        By using a QTSP, users can be confident that the validation service meets the requirements set out in eIDAS regulations, which in turn provides a higher level of legal certainty. This is because QTSPs are legally obligated to be listed in the national Trusted List, which is easily accessible to users via the Trusted List Browser.
+
+        Alternatively, an electronic signature or seal can also be verified by implementing the Digital Signature Software (DSS) library, which is open-source and provided by the EU.
+
 <section .informative>Security and privacy considerations
 
     <section>Security considerations
