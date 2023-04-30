@@ -296,6 +296,8 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
   &#34;id&#34;: &#34;did:elsi:exampleOrganizationIdentifier&#34;,
 }</pre>
 
+        <p>It may be surprising to see a DID document without a <code>proof</code> section, but in the case of this DID it is not required (even though implementations may choose to return DID documents including it).
+        </p>
         <p>One of the common situations where DID resolution is required is in the verification of Verifiable Credentials. This DID method is intented to be used in W3C Verifiable Credentials which, when signed using JAdES digital signatures, can be used to meet the requirements of electronic signatures, advanced electronic signatures, qualified electronic signatures, electronic seals, advanced electronic seals, and qualified electronic seals as defined in Regulation (EU) No 910/2014 (eIDAS).
         </p>
         <p>Section <a href="#didresolution"></a> describes the verification of those credentials and why a <code>verificationMethod</code> property in the DID document is not required.
@@ -331,8 +333,8 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>Essentially, JAdES specifies a JSON [[RFC8259]] format for AdES signatures (JAdES signatures) built on JSON Web Signatures (JWS) as specified in [[RFC7515]]:
         </p>
         <ul>
-            <li id='list_249.1'>Extends the JSON Web Signatures specified in [[RFC7515]] by defining an additional set of JSON header parameters that can be incorporated in the JOSE Header.            </li>
-            <li id='list_249.2'>Specifies the mechanisms for incorporating the above JSON components in JSON Web Signatures to build JAdES signatures, offering the same features as CAdES and XAdES in JSON syntax, and therefore fulfilling the same requirements.            </li>
+            <li id='list_251.1'>Extends the JSON Web Signatures specified in [[RFC7515]] by defining an additional set of JSON header parameters that can be incorporated in the JOSE Header.            </li>
+            <li id='list_251.2'>Specifies the mechanisms for incorporating the above JSON components in JSON Web Signatures to build JAdES signatures, offering the same features as CAdES and XAdES in JSON syntax, and therefore fulfilling the same requirements.            </li>
         </ul>
 
     </section>
@@ -347,9 +349,9 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>The algorithm [[DEP-DSS]] focuses on determining 3 sub-conclusions:
         </p>
         <ol>
-            <li id='list_262.1'>Whether the certificate is qualified            </li>
-            <li id='list_262.2'>What is the type of this certificate            </li>
-            <li id='list_262.3'>Whether the corresponding private key is protected by a QSCD.            </li>
+            <li id='list_264.1'>Whether the certificate is qualified            </li>
+            <li id='list_264.2'>What is the type of this certificate            </li>
+            <li id='list_264.3'>Whether the corresponding private key is protected by a QSCD.            </li>
         </ol>
 
     </section>
@@ -378,10 +380,10 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>Actually, the EU regulatory environment requires that identities (and identifiers) of any legal person be completely public and subject to public scrutiny, whether from regulators, consumer organisations, industry watchdogs or any other interested party. Some examples:
         </p>
         <ul>
-            <li id='list_283.1'>Any of the 30 million businesses in the EU is required by law to register with the appropriate national or international body before being able to engage in any relevant activity. During the process, an identifier is assigned to the business. The registration process and the way to obtain the identifier varies depending on the industry regulation (e.g., banking, telco, health, ...) and other factors.            </li>
-            <li id='list_283.2'>The identities of businesses are public and anybody can access all related information from the relevant registries. Even if in some EU countries access is not free, it is public. Information includes many details about the business, including identifier, ownership and place of stablishment.            </li>
-            <li id='list_283.3'>Businesses are required to include those identifiers in any relevant transaccion, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.            </li>
-            <li id='list_283.4'>Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and custodied by all businesses participating in the chain has to use the legally valid identifiers of each business.            </li>
+            <li id='list_285.1'>Any of the 30 million businesses in the EU is required by law to register with the appropriate national or international body before being able to engage in any relevant activity. During the process, an identifier is assigned to the business. The registration process and the way to obtain the identifier varies depending on the industry regulation (e.g., banking, telco, health, ...) and other factors.            </li>
+            <li id='list_285.2'>The identities of businesses are public and anybody can access all related information from the relevant registries. Even if in some EU countries access is not free, it is public. Information includes many details about the business, including identifier, ownership and place of stablishment.            </li>
+            <li id='list_285.3'>Businesses are required to include those identifiers in any relevant transaccion, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.            </li>
+            <li id='list_285.4'>Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and custodied by all businesses participating in the chain has to use the legally valid identifiers of each business.            </li>
         </ul>
 
     </section>
