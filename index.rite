@@ -1,6 +1,5 @@
 ---
 title: DID ETSI Legal Semantic Person Identifier Method Specification (did:elsi)
-template: "assets/templates/respec"
 
 editors:
    - name: "Jesus Ruiz"
@@ -31,8 +30,8 @@ codpyright: >
    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode">
    Creative Commons Attribution 4.0 International Public License</a>
 
-latestVersion: "https://github.com/hesusruiz/did-method-elsi"
-github: "https://github.com/hesusruiz/did-method-elsi"
+latestVersion: "https://github.com/alastria/did-method-elsi"
+github: "https://github.com/alastria/did-method-elsi"
 
 localBiblio:
    "ETSI-CERTOVERVIEW":
