@@ -1,4 +1,4 @@
-# DID ETSI Legal Semantic Person Identifier Method Specification (`did:elsi`)
+# DID ETSI Legal person Semantic Identifier Method Specification (`did:elsi`)
 
 This repository contains the `did:elsi` DID Method Specification.
 
