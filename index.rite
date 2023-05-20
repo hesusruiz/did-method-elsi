@@ -206,12 +206,7 @@ localBiblio:
         certificate. Digital certificates are provided by over 200 Trust Service
         Providers in the EU.
 
-        If the legal entity can not perform those digital signatures, then it does
-        not make sense that it wants an ELSI DID, because it is not really
-        transacting digitally and most probably is performing most processes
-        manually and with paper. Before entering the world of digital transactions
-        with Verifiable Credentials, the legal entity has to become digital at least
-        until it can digitally sign legally-binding documents.
+        If the legal entity can not perform those digital signatures, then it does not make sense that it wants an ELSI DID, because it is not really transacting digitally and most probably is performing most processes manually and with paper. Before entering the world of digital transactions with Verifiable Credentials, the legal entity has to become digital at least until it can digitally sign legally-binding documents.
 
         So any legal person than can digitally sign a document using an advanced or
         qualified e-seal in the EU already has an ELSI DID without any further
@@ -234,17 +229,17 @@ localBiblio:
 
         It may be surprising to see a DID document without a `proof` section, but in the case of this DID it is not required (even though implementations may choose to return DID documents including it).
 
-        One of the common situations where DID resolution is required is in the verification of Verifiable Credentials. This DID method is intented to be used in W3C Verifiable Credentials which, when signed using JAdES digital signatures, can be used to meet the requirements of electronic signatures, advanced electronic signatures, qualified electronic signatures, electronic seals, advanced electronic seals, and qualified electronic seals as defined in Regulation (EU) No 910/2014 (eIDAS).
+        One of the common situations where DID resolution is required is in the verification of Verifiable Credentials. This DID method is intended to be used in W3C Verifiable Credentials which, when signed using JAdES digital signatures, can be used to meet the requirements of electronic signatures, advanced electronic signatures, qualified electronic signatures, electronic seals, advanced electronic seals, and qualified electronic seals as defined in Regulation (EU) No 910/2014 (eIDAS).
 
         Section <a href="#didresolution"></a> describes the verification of those credentials and why a `verificationMethod` property in the DID document is not required.
 
     <section>Update
 
-        This DID method does not support updates. Management of the DID lifecycle and associated information (e.g., cyptographic material) is performed according to the eIDAS regulation and its implementatin.
+        This DID method does not support updates. Management of the DID lifecycle and associated information (e.g., cryptographic material) is performed according to the eIDAS regulation and its implementation.
 
     <section>Deactivate (Revoke)
 
-        This DID method does not support deactivation. Management of the DID lifecycle and associated information (e.g., cyptographic material) is performed according to the eIDAS regulation and its implementatin.
+        This DID method does not support deactivation. Management of the DID lifecycle and associated information (e.g., cryptographic material) is performed according to the eIDAS regulation and its implementation.
 
 <section #didresolution>DID resolution and the verification of Verifiable Credentials
 

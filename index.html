@@ -279,12 +279,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         certificate. Digital certificates are provided by over 200 Trust Service
         Providers in the EU.
         </p>
-        <p>If the legal entity can not perform those digital signatures, then it does
-        not make sense that it wants an ELSI DID, because it is not really
-        transacting digitally and most probably is performing most processes
-        manually and with paper. Before entering the world of digital transactions
-        with Verifiable Credentials, the legal entity has to become digital at least
-        until it can digitally sign legally-binding documents.
+        <p>If the legal entity can not perform those digital signatures, then it does not make sense that it wants an ELSI DID, because it is not really transacting digitally and most probably is performing most processes manually and with paper. Before entering the world of digital transactions with Verifiable Credentials, the legal entity has to become digital at least until it can digitally sign legally-binding documents.
         </p>
         <p>So any legal person than can digitally sign a document using an advanced or
         qualified e-seal in the EU already has an ELSI DID without any further
@@ -310,7 +305,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
         <p>It may be surprising to see a DID document without a <code>proof</code> section, but in the case of this DID it is not required (even though implementations may choose to return DID documents including it).
         </p>
-        <p>One of the common situations where DID resolution is required is in the verification of Verifiable Credentials. This DID method is intented to be used in W3C Verifiable Credentials which, when signed using JAdES digital signatures, can be used to meet the requirements of electronic signatures, advanced electronic signatures, qualified electronic signatures, electronic seals, advanced electronic seals, and qualified electronic seals as defined in Regulation (EU) No 910/2014 (eIDAS).
+        <p>One of the common situations where DID resolution is required is in the verification of Verifiable Credentials. This DID method is intended to be used in W3C Verifiable Credentials which, when signed using JAdES digital signatures, can be used to meet the requirements of electronic signatures, advanced electronic signatures, qualified electronic signatures, electronic seals, advanced electronic seals, and qualified electronic seals as defined in Regulation (EU) No 910/2014 (eIDAS).
         </p>
         <p>Section <a href="#didresolution"></a> describes the verification of those credentials and why a <code>verificationMethod</code> property in the DID document is not required.
         </p>
@@ -319,14 +314,14 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
     <section><h2>Update</h2>
 
-        <p>This DID method does not support updates. Management of the DID lifecycle and associated information (e.g., cyptographic material) is performed according to the eIDAS regulation and its implementatin.
+        <p>This DID method does not support updates. Management of the DID lifecycle and associated information (e.g., cryptographic material) is performed according to the eIDAS regulation and its implementation.
         </p>
     </section>
 
 
     <section><h2>Deactivate (Revoke)</h2>
 
-        <p>This DID method does not support deactivation. Management of the DID lifecycle and associated information (e.g., cyptographic material) is performed according to the eIDAS regulation and its implementatin.
+        <p>This DID method does not support deactivation. Management of the DID lifecycle and associated information (e.g., cryptographic material) is performed according to the eIDAS regulation and its implementation.
         </p>
     </section>
 
@@ -345,8 +340,8 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>Essentially, JAdES specifies a JSON [[RFC8259]] format for AdES signatures (JAdES signatures) built on JSON Web Signatures (JWS) as specified in [[RFC7515]]:
         </p>
         <ul>
-            <li id='list_261.1'>Extends the JSON Web Signatures specified in [[RFC7515]] by defining an additional set of JSON header parameters that can be incorporated in the JOSE Header.            </li>
-            <li id='list_261.2'>Specifies the mechanisms for incorporating the above JSON components in JSON Web Signatures to build JAdES signatures, offering the same features as CAdES and XAdES in JSON syntax, and therefore fulfilling the same requirements.            </li>
+            <li id='list_256.1'>Extends the JSON Web Signatures specified in [[RFC7515]] by defining an additional set of JSON header parameters that can be incorporated in the JOSE Header.            </li>
+            <li id='list_256.2'>Specifies the mechanisms for incorporating the above JSON components in JSON Web Signatures to build JAdES signatures, offering the same features as CAdES and XAdES in JSON syntax, and therefore fulfilling the same requirements.            </li>
         </ul>
 
     </section>
@@ -361,9 +356,9 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>The algorithm [[DEP-DSS]] focuses on determining 3 sub-conclusions:
         </p>
         <ol>
-            <li id='list_274.1'>Whether the certificate is qualified            </li>
-            <li id='list_274.2'>What is the type of this certificate            </li>
-            <li id='list_274.3'>Whether the corresponding private key is protected by a QSCD.            </li>
+            <li id='list_269.1'>Whether the certificate is qualified            </li>
+            <li id='list_269.2'>What is the type of this certificate            </li>
+            <li id='list_269.3'>Whether the corresponding private key is protected by a QSCD.            </li>
         </ol>
 
         <p>To achieve a high level of trust in the validation, this can be delegated to Qualified Trust Service Providers (QTSPs) that offer services specifically for this purpose.
@@ -398,10 +393,10 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>Actually, the EU regulatory environment requires that identities (and identifiers) of any legal person be completely public and subject to public scrutiny, whether from regulators, consumer organisations, industry watchdogs or any other interested party. Some examples:
         </p>
         <ul>
-            <li id='list_301.1'>Any of the 30 million businesses in the EU is required by law to register with the appropriate national or international body before being able to engage in any relevant activity. During the process, an identifier is assigned to the business. The registration process and the way to obtain the identifier varies depending on the industry regulation (e.g., banking, telco, health, ...) and other factors.            </li>
-            <li id='list_301.2'>The identities of businesses are public and anybody can access all related information from the relevant registries. Even if in some EU countries access is not free, it is public. Information includes many details about the business, including identifier, ownership and place of establishment.            </li>
-            <li id='list_301.3'>Businesses are required to include those identifiers in any relevant transaction, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.            </li>
-            <li id='list_301.4'>Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and on custody by all businesses participating in the chain has to use the legally valid identifiers of each business.            </li>
+            <li id='list_296.1'>Any of the 30 million businesses in the EU is required by law to register with the appropriate national or international body before being able to engage in any relevant activity. During the process, an identifier is assigned to the business. The registration process and the way to obtain the identifier varies depending on the industry regulation (e.g., banking, telco, health, ...) and other factors.            </li>
+            <li id='list_296.2'>The identities of businesses are public and anybody can access all related information from the relevant registries. Even if in some EU countries access is not free, it is public. Information includes many details about the business, including identifier, ownership and place of establishment.            </li>
+            <li id='list_296.3'>Businesses are required to include those identifiers in any relevant transaction, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.            </li>
+            <li id='list_296.4'>Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and on custody by all businesses participating in the chain has to use the legally valid identifiers of each business.            </li>
         </ul>
 
     </section>
