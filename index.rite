@@ -286,18 +286,20 @@ localBiblio:
 
             - Businesses are required to include those identifiers in any relevant transaction, whether they are electronic or offline. When citizens buy any product or service, they have the right to obtain documentation about the purchase including the identifier of the company.
 
-            - Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among other with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and on custody by all businesses participating in the chain has to use the legally valid identifiers of each business.
+            - Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among others with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and on custody by all businesses participating in the chain has to use the legally valid identifiers of each business.
 
 
-<section>Example: Onboarding with Verifiable Credentials
+<section>Example: `did:elsi` and onboarding with Verifiable Credentials
 
-    Onboarding refers to a process which precedes entering into a business relationship with a new participant, which has to be a legal person (we do not address here onboarding of natural persons).
+    To illustrate the usefulness of the `did:elsi` method, this section describes the relationship of the `did:elsi` method and a special type of Verifiable Credential that we call <b>LEARCredential</b>, which can be very useful to perform, among others, the onboarding process in ecosystems like Data Spaces with compliance to the eIDAS regulation.
 
-    In general, the onboarding process is one of the less digitised and more diverse, with different implementations depending on the sector of activity and local regulation. Even within the same sector the actual implementation of onboarding processes for different companies can vary considerably.
+    The word onboarding refers to a process which precedes entering into a business relationship with a new participant, which in our case has to be a legal person (`did:elsi` is only for legal persons).
 
-    Onboarding of participants in an ecosystem may also present differences depending on the specific ecosystem. This chapter presents an approach based on eIDAS digital certificates that can facilitate in the EU area a fully digital and automated cross-border onboarding process and compliance with KYC (Know Your Customer) requirements.
+    In general, the onboarding process is one of the less digitised and more diverse, with different implementations depending on the sector of activity and local regulation. Even within the same sector the actual implementation of onboarding processes for different companies can vary considerably. Onboarding of participants in an ecosystem may also present differences depending on the specific ecosystem.
+    
+    This chapter presents an approach based on eIDAS digital certificates that can facilitate in the EU area a fully digital and automated cross-border onboarding process and compliance with KYC (Know Your Customer) requirements.
 
-    Onboarding of a new participant in the ecosystem is a critical activity and proper identification of the new participant at this stage affects very much to the level of trust of the whole onboarding process and so the level of trust that all the other participants in the ecosystem can place on the identity of the new participant. The objective here is to provide a reasonable balance between convenience and level of legal certainty and security of the electronic transactions involved in the onboarding process.
+    Onboarding of a new participant in the ecosystem is a critical activity, and proper identification of the new participant at this stage affects very much to the level of trust of the whole onboarding process and so the level of trust that all the other participants in the ecosystem can place on the identity of the new participant. The objective here is to provide a reasonable balance between convenience and level of legal certainty and security of the electronic transactions involved in the onboarding process.
 
     To facilitate the descriptions later in this document, we reproduce here some relevant definitions taken from the eIDAS Regulation:
 
@@ -313,7 +315,7 @@ localBiblio:
 
     <section>Types of digital certificates in the EU
 
-        The relevant types of certificates for the onboarding process are issued to natural persons, legal persons and natural persons representing a legal person (as described in article 3(1) of eIDAS for the case of representation).
+        The types of certificates which are relevant for the onboarding process are the ones issued to natural persons, to legal persons and to natural persons representing a legal person (as described in article 3(1) of eIDAS for the case of representation).
 
         Based on the regulation, some TSPs (Trust Service Providers) in the EU provide several types of digital certificates for digital signature/seals:
 
@@ -337,21 +339,21 @@ localBiblio:
 
         Not all Member States implement at this moment the certificate for a Natural Person as Legal Entity Representative, but the onboarding process described below takes advantage of it when it is available for a participant initiating the onboarding.
 
-        In this way, the onboarding process is prepared for the future, because given that there are different cases of representation, the eIDAS Technical subgroup has been requested by the eIDAS Cooperation Network to amend the technical specifications to include all the cases of representation (see section 2.8. NATURAL AND LEGAL PERSON REPRESENTATIVE from eIDAS SAML Attribute Profile V1.2., 31 August 2019). It is expected that in the near future most TSPs will start issuing those digital certificates that simplify and streamline enormously the onboarding processes, not just for this specific use case but for any type of use case in the economy.
+        In this way, the onboarding process is prepared for the future, because given that there are different cases of representation, the eIDAS Technical subgroup has been requested by the eIDAS Cooperation Network to amend the technical specifications to include all the cases of representation (see section "2.8. NATURAL AND LEGAL PERSON REPRESENTATIVE from eIDAS SAML Attribute Profile V1.2., 31 August 2019"). It is expected that in the near future most TSPs will start issuing those digital certificates that simplify and streamline enormously the onboarding processes, not just for this specific use case but for any type of use case in the economy.
 
         To facilitate the explanation below, we will use the following terminology:
 
             <ul>
-            - <b>NP</b>: Natural Person with a certificate for electronic signature.
-            - <b>LE</b>: the Legal Entity that is being onboarded, with a certificate for electronic seal.
-            - <b>LER</b>: the Natural Person as Legal Entity Representative with a certificate for electronic signature when acting as legal representative of a legal entity.
+                - <b>NP</b>: Natural Person holding a certificate for electronic signature.
+                - <b>LE</b>: the Legal Entity that is being onboarded, holding a certificate for electronic seal.
+                - <b>LER</b>: the Natural Person as Legal Entity Representative, holding a certificate for electronic signature when acting as legal representative of a legal entity.
 
         The above concepts have a one-to-one relationship with the legal entities in eIDAS. However, we need a little bit more flexibility with respect to the person/employee that can initiate and drive the onboarding process in the ecosystem. Even in a big company there are not many employees that have the power of legal representation. We define here an additional concept that is being used already in many other contexts:
 
             <ul>
                 - <b>LEAR</b>: Legal Entity Appointed Representative, a natural person that has been nominated (appointed) by a legal representative to act on behalf of the organisation to perform a limited set of processes, in our case the onboarding process (and maybe some additional tasks).
 
-        Instead of using traditional digital certificates, we require that the LEAR receives a special type of Verifiable Credential called LEARCredential with proof that the person has the  power to represent the legal person in some limited capacity. This credential is described later in this document.
+        Instead of using traditional digital certificates, we require that the LEAR receives a special type of Verifiable Credential called <b>LEARCredential</b> with proof that the person has the  power to represent the legal person in some limited capacity. This credential is described later in this document.
 
         This concept of LEAR is very similar to the equivalent one for how organisations interact with the European Commission to perform certain tasks on behalf of their organisation, as part of its participation in EU funded grants, procurements and prizes that are managed via the EU Funding & Tenders Portal. To illustrate further, see below the description of LEAR from the Commission.
 
@@ -370,7 +372,6 @@ localBiblio:
                 - managing the access rights at organisation-level (and read-only access at project-level)
                 - appointing the persons which will be able to electronically sign grants/contracts (Legal Signatories — LSIGNs) and cost claims/invoices (Financial Signatories — FSIGNs).
 
-        We have to make a detailed definition of the LEAR responsibilities in our context, and specify that instead of a signed PDF we require a signed Verifiable Credential with the proper content.
 
     <section>The LEARCredential
 
