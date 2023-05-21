@@ -119,7 +119,7 @@
     </p>
     <p>The identifiers in this DID method are based on the unique identifiers that are already used in the eIDAS certificates that comply to the relevant ETSI standards for electronic signatures and seals. This is in contrast to most other did methods, which invent or use identifiers and mechanisms that are not well integrated with the legal framework and which are not in general legally recognised in the EU for economic transactions (e.g., they can not be used as legal person identifiers in electronic invoices across the EU).
     </p>
-    <p>With this approach, SSI ecosystems can use W3C Verifiable Credentials that have the same legal status as any other document which uses advanced or qualified digital signatures and seals, and so can replace easily other documents in less efficient formats, like signed PDFs.
+    <p>With this approach, SSI ecosystems can use W3C Verifiable Credentials that have the same legal status as any other document which uses advanced or qualified electronic signatures and seals, and so can replace easily other documents in less efficient formats, like signed PDFs.
     </p>
 </section>
 
@@ -231,7 +231,7 @@
             </p>
         </blockquote>
 
-        <p>That means that any eIDAS digital certificate issued by TSPs to legal persons compliant with the ETSI standards including an <code>organizationIdentifier</code> attribute can be used to derive a DID for a legal person from the ETSI standard identifier by applying the rule described above.
+        <p>That means that any eIDAS certificate issued by <a href="https://digital-strategy.ec.europa.eu/en/policies/eu-trusted-lists">TSPs</a> to legal persons compliant with the ETSI standards including an <code>organizationIdentifier</code> attribute can be used to derive a DID for a legal person from the ETSI standard identifier by applying the rule described above.
         </p>
         <p>Some examples of DIDs are:
         </p>
@@ -267,7 +267,7 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
         <p>If a legal person can digitally sign or seal a document using an advanced or qualified certificate in the EU, then it already has a valid `did:elsi`identifier, using the <code>organizationIdentifier</code> in the certificate used to sign or seal. No further actions are required.
         </p>
-        <p>If the legal entity can not perform those digital signatures, then it does not make sense that it wants an ELSI DID, because it is not really transacting digitally and most probably is performing most processes manually and with paper. Before entering the world of digital transactions with Verifiable Credentials, the legal entity has to become digital at least until it can digitally sign legally-binding documents.
+        <p>If the legal entity can not perform those electronic signatures, then it does not make sense that it wants an ELSI DID, because it is not really transacting digitally and most probably is performing most processes manually and with paper. Before entering the world of digital transactions with Verifiable Credentials, the legal entity has to become digital at least until it can digitally sign legally-binding documents.
         </p>
     </section>
 
@@ -391,38 +391,54 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
 <section><h2>Example: `did:elsi` and onboarding with Verifiable Credentials</h2>
 
-    <p>To illustrate the usefulness of the `did:elsi` method, this section describes the relationship of the `did:elsi` method and a special type of Verifiable Credential that we call <b>LEARCredential</b>, which can be very useful to perform, among others, the onboarding process in ecosystems like Data Spaces with compliance to the eIDAS regulation.
+    <p>To illustrate the usefulness of the `did:elsi` method, this section describes the relationship of the `did:elsi` method with a special type of Verifiable Credential that we call <b>LEARCredential</b> and which can be very useful to perform, among others, the onboarding process in ecosystems like Data Spaces with compliance to the eIDAS regulation.
     </p>
-    <p>The word onboarding refers to a process which precedes entering into a business relationship with a new participant, which in our case has to be a legal person (`did:elsi` is only for legal persons).
+    <p>The objective of the onboarding process in an ecosystem is to identify and register a legal entity as a new participant. However, in most cases the process is initiated and driven by a natural person.
     </p>
-    <p>In general, the onboarding process is one of the less digitised and more diverse, with different implementations depending on the sector of activity and local regulation. Even within the same sector the actual implementation of onboarding processes for different companies can vary considerably. Onboarding of participants in an ecosystem may also present differences depending on the specific ecosystem.
+    <p>To provide appropriate levels of legal certainty and security, the onboarding process requires that the natural person driving the process demonstrates that she is either:
     </p>
-    <p>This chapter presents an approach based on eIDAS digital certificates that can facilitate in the EU area a fully digital and automated cross-border onboarding process and compliance with KYC (Know Your Customer) requirements.
-    </p>
-    <p>Onboarding of a new participant in the ecosystem is a critical activity, and proper identification of the new participant at this stage affects very much to the level of trust of the whole onboarding process and so the level of trust that all the other participants in the ecosystem can place on the identity of the new participant. The objective here is to provide a reasonable balance between convenience and level of legal certainty and security of the electronic transactions involved in the onboarding process.
-    </p>
-    <p>To facilitate the descriptions later in this document, we reproduce here some relevant definitions taken from the eIDAS Regulation:
-    </p>
-    <p><b>Electronic identification</b> means the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing a legal person.
-    </p>
-    <p><b>Person identification data</b> means a set of data enabling the identity of a natural or legal person, or a natural person representing a legal person to be established.
-    </p>
-    <p><b>Authentication</b> means an electronic process that enables the electronic identification of a natural or legal person, or the origin and integrity of data in electronic form to be confirmed.
-    </p>
-    <p><b>Relying party</b> means a natural or legal person that relies upon an electronic identification or a trust service;
-    The onboarding process presented in this chapter is just one of the possible options that can be implemented, but it should be the main one supported in the EU region given its advantages.
+    <ul>
+        <li id='list_300.1'>a legal representative of the new participant or        </li>
+        <li id='list_300.2'>a natural person that has been delegated by a legal representative at least the powers required to perform the onboarding process on behalf of the legal entity.        </li>
+    </ul>
+
+    <p>The onboarding process described here is based on a special type of Verifiable Credential that we will call LEARCredential (from <b>L</b>egal <b>E</b>ntity <b>A</b>ppointed <b>R</b>epresentative), given its purpose. We require that the user driving the process uses a LEARCredential and that the user proves control of the `did:elsi` identifier which is the subject of the credential (the details of how this is done using eIDAS certificates are described below).
     </p>
 
-    <section><h2>Types of digital certificates in the EU</h2>
+    <section><h2>A little bit about onboarding</h2>
 
-        <p>The types of certificates which are relevant for the onboarding process are the ones issued to natural persons, to legal persons and to natural persons representing a legal person (as described in article 3(1) of eIDAS for the case of representation).
+        <p>The word <i>onboarding</i> refers to a process which precedes entering into a business relationship with a new participant, which in our case has to be a legal person (because `did:elsi` is only for legal persons).
         </p>
-        <p>Based on the regulation, some TSPs (Trust Service Providers) in the EU provide several types of digital certificates for digital signature/seals:
+        <p>In general, the onboarding process is one of the less digitised and more diverse, with different implementations depending on the sector of activity and local regulation. Even within the same sector the actual implementation of onboarding processes for different companies can vary considerably. Onboarding of participants in an ecosystem may also present differences depending on the specific ecosystem.
+        </p>
+        <p>This chapter presents an approach based on eIDAS certificates that can facilitate in the EU area a fully digital and automated cross-border onboarding process and compliance with KYC (Know Your Customer) requirements.
+        </p>
+        <p>Onboarding of a new participant in the ecosystem is a critical activity, and proper identification of the new participant at this stage affects very much to the level of trust of the whole onboarding process and so the level of trust that all the other participants in the ecosystem can place on the identity of the new participant. The objective here is to provide a reasonable balance between convenience and level of legal certainty and security of the electronic transactions involved in the onboarding process.
+        </p>
+        <p>To facilitate the descriptions later in this document, we reproduce here some relevant definitions taken from the eIDAS Regulation:
+        </p>
+        <p><b>Electronic identification</b> means the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing a legal person.
+        </p>
+        <p><b>Person identification data</b> means a set of data enabling the identity of a natural or legal person, or a natural person representing a legal person to be established.
+        </p>
+        <p><b>Authentication</b> means an electronic process that enables the electronic identification of a natural or legal person, or the origin and integrity of data in electronic form to be confirmed.
+        </p>
+        <p><b>Relying party</b> means a natural or legal person that relies upon an electronic identification or a trust service;
+        The onboarding process presented in this chapter is just one of the possible options that can be implemented, but it should be the main one supported in the EU region given its advantages.
+        </p>
+    </section>
+
+
+    <section id='typesofcertificates'><h2>Types of certificates for onboarding</h2>
+
+        <p>`did:elsi` uses eIDAS certificates. The types of certificates which are relevant for the onboarding process are the ones issued to natural persons, to legal persons and to natural persons representing a legal person (as described in article 3(1) of eIDAS for the case of representation).
+        </p>
+        <p>Based on the eIDAS regulation, some TSPs (Trust Service Providers) in the EU provide several types of certificates for electronic signatures and seals:
         </p>
         <ul>
-            <li id='list_322.1'><b>Natural Person</b> certificate for electronic signatures            </li>
-            <li id='list_322.2'><b>Legal Person</b> certificate for electronic seals            </li>
-            <li id='list_322.3'><b>Natural Person as Legal Entity Representative</b> certificate for electronic signatures            </li>
+            <li id='list_334.1'><b>Natural Person</b> certificate for electronic signatures            </li>
+            <li id='list_334.2'><b>Legal Person</b> certificate for electronic seals            </li>
+            <li id='list_334.3'><b>Natural Person as Legal Entity Representative</b> certificate for electronic signatures            </li>
         </ul>
 
 
@@ -444,23 +460,23 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
         <p>Not all Member States implement at this moment the certificate for a Natural Person as Legal Entity Representative, but the onboarding process described below takes advantage of it when it is available for a participant initiating the onboarding.
         </p>
-        <p>In this way, the onboarding process is prepared for the future, because given that there are different cases of representation, the eIDAS Technical subgroup has been requested by the eIDAS Cooperation Network to amend the technical specifications to include all the cases of representation (see section "2.8. NATURAL AND LEGAL PERSON REPRESENTATIVE from eIDAS SAML Attribute Profile V1.2., 31 August 2019"). It is expected that in the near future most TSPs will start issuing those digital certificates that simplify and streamline enormously the onboarding processes, not just for this specific use case but for any type of use case in the economy.
+        <p>In this way, the onboarding process is prepared for the future, because given that there are different cases of representation, the eIDAS Technical subgroup has been requested by the eIDAS Cooperation Network to amend the technical specifications to include all the cases of representation (see section "2.8. NATURAL AND LEGAL PERSON REPRESENTATIVE from eIDAS SAML Attribute Profile V1.2., 31 August 2019"). It is expected that in the near future most TSPs will start issuing those certificates that simplify and streamline enormously the onboarding processes, not just for this specific use case but for any type of use case in the economy.
         </p>
         <p>To facilitate the explanation below, we will use the following terminology:
         </p>
             <ul>
-                <li id='list_346.1'><b>NP</b>: Natural Person holding a certificate for electronic signature.                </li>
-                <li id='list_346.2'><b>LE</b>: the Legal Entity that is being onboarded, holding a certificate for electronic seal.                </li>
-                <li id='list_346.3'><b>LER</b>: the Natural Person as Legal Entity Representative, holding a certificate for electronic signature when acting as legal representative of a legal entity.                </li>
+                <li id='list_358.1'><b>NP</b>: Natural Person holding a certificate for electronic signature.                </li>
+                <li id='list_358.2'><b>LE</b>: the Legal Entity that is being onboarded, holding a certificate for electronic seal.                </li>
+                <li id='list_358.3'><b>LER</b>: the Natural Person as Legal Entity Representative, holding a certificate for electronic signature when acting as legal representative of a legal entity.                </li>
             </ul>
 
-        <p>The above concepts have a one-to-one relationship with the legal entities in eIDAS. However, we need a little bit more flexibility with respect to the person/employee that can initiate and drive the onboarding process in the ecosystem. Even in a big company there are not many employees that have the power of legal representation. We define here an additional concept that is being used already in many other contexts:
+        <p>The above concepts have a one-to-one relationship with the legal entities in eIDAS. However, we need a little bit more flexibility with respect to the person/employee that can initiate and drive the onboarding process of the legal person in the ecosystem. Even in a big company there are not many employees that have the power of legal representation. We define here an additional concept that is being used already in many other contexts:
         </p>
             <ul>
-                <li id='list_353.1'><b>LEAR</b>: Legal Entity Appointed Representative, a natural person that has been nominated (appointed) by a legal representative to act on behalf of the organisation to perform a limited set of processes, in our case the onboarding process (and maybe some additional tasks).                </li>
+                <li id='list_365.1'><b>LEAR</b>: Legal Entity Appointed Representative, a natural person that has been nominated (appointed) by a legal representative to act on behalf of the organisation to perform a limited set of processes, in our case the onboarding process (and maybe some additional tasks).                </li>
             </ul>
 
-        <p>Instead of using traditional digital certificates, we require that the LEAR receives a special type of Verifiable Credential called <b>LEARCredential</b> with proof that the person has the  power to represent the legal person in some limited capacity. This credential is described later in this document.
+        <p>Instead of using traditional X.509 certificates, we require that the LEAR receives a special type of Verifiable Credential called <b>LEARCredential</b> with proof that the person has the  power to represent the legal person in some limited capacity. This credential is described later in this document.
         </p>
         <p>This concept of LEAR is very similar to the equivalent one for how organisations interact with the European Commission to perform certain tasks on behalf of their organisation, as part of its participation in EU funded grants, procurements and prizes that are managed via the EU Funding & Tenders Portal. To illustrate further, see below the description of LEAR from the Commission.
         </p>
@@ -468,15 +484,15 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <aside class='note' title="LEAR appointment and validation">
             <p>Parallel to the validation of your organisation, you will be requested by the Central Validation Service to appoint your Legal Entity Appointed Representative (LEAR).
             </p>
-            <p>This must be done by a legal representative of your organisation with the necessary legal authority to commit the organisation for this type of decisions (e.g. typically CEOs, rectors, Director-Generals, etc. always in accordance with the statutes of your organisation). 
+            <p>This must be done by a <b>legal representative of your organisation with the necessary legal authority to commit the organisation</b> for this type of decisions (e.g. typically CEOs, rectors, Director-Generals, etc. always in accordance with the statutes of your organisation). 
             </p>
-            <p>The LEAR role, which can be performed by any member of the organisation (typically from the central administration), is key. They are formally nominated to manage your organisation's use of the Portal and thus bear the final responsibility for all your actions in the Portal. Once validated, they will be responsible for:
+            <p>The LEAR role, which <b>can be performed by any member of the organisation</b> (typically from the central administration), is key. They are formally nominated to manage your organisation's use of the Portal and thus bear the final responsibility for all your actions in the Portal. Once validated, they will be responsible for:
             </p>
             <ul>
-                <li id='list_369.1'>keeping an overview of all the proposals/projects/contracts your organisation is involved in                </li>
-                <li id='list_369.2'>managing all the legal and financial information about your organisation                </li>
-                <li id='list_369.3'>managing the access rights at organisation-level (and read-only access at project-level)                </li>
-                <li id='list_369.4'>appointing the persons which will be able to electronically sign grants/contracts (Legal Signatories — LSIGNs) and cost claims/invoices (Financial Signatories — FSIGNs).                </li>
+                <li id='list_380.1'>keeping an overview of all the proposals/projects/contracts your organisation is involved in                </li>
+                <li id='list_380.2'>managing all the legal and financial information about your organisation                </li>
+                <li id='list_380.3'>managing the access rights at organisation-level (and read-only access at project-level)                </li>
+                <li id='list_380.4'>appointing the persons which will be able to electronically sign grants/contracts (Legal Signatories — LSIGNs) and cost claims/invoices (Financial Signatories — FSIGNs).                </li>
             </ul>
 
         </aside>
@@ -486,36 +502,105 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
 
     <section><h2>The LEARCredential</h2>
 
-        <p>The objective of the onboarding process in an ecosystem is to identify and register a legal entity as a new participant. However, in most cases the process is initiated and driven by a natural person.
-        </p>
-        <p>To provide higher legal certainty and higher security, the onboarding process requires that the natural person driving the process should be either a legal representative of the participant or a natural person that has been delegated by a legal representative at least the powers required to perform the onboarding process on behalf of the legal entity.
-        </p>
-        <p>The onboarding process is based on a special type of Verifiable Credential that we will call LEARCredential, given its purpose. We require that the user driving the process is a LEAR holding and controlling a LEARCredential.
-        </p>
-        <p>The LEARCredential can be generated in different ways:
+        <p>The LEARCredential can be generated in different ways, using the different eIDAS certificates described in section <a href="#typesofcertificates"></a> and the Trust Service Providers:
         </p>
         <ul>
-            <li id='list_386.1'>Using the LE certificate. The person controlling the LE certificate issues a Verifiable Credential to a natural person which typically is an employee of a department in charge of managing the onboarding processes and the relationship with a given ecosystem. The Verifiable Credential includes a description of the actual powers that are being delegated (the required ones have to be defined by the ecosystem). The Verifiable Credential is sealed with the digital certificate of the LE. This VC is then called a LEARCredential and the person controlling it can use it to authenticate in the onboarding process and act as LEAR.            </li>
-            <li id='list_386.2'>Using the LER certificate. The main difference with the above is that in this case the Verifiable Credential is signed with a LER certificate. This tends to be easier, especially in big companies because there are normally more than one LER depending on the company structure. As a special case, the LER can issue a LEARCredential to herself and then become a LEAR. This can be used when the LER wants to be the one performing the onboarding process.            </li>
-            <li id='list_386.3'>Using a trusted entity before onboarding. When neither LE nor LER digital certificates are already available in the company, a TSP or other trusted entity accepted by the ecosystem could generate and sign the Verifiable Credential directly, instead of generating a LER certificate.            </li>
+            <li id='list_391.1'><b>Using the LE certificate</b>. The person controlling the LE certificate issues a Verifiable Credential to a natural person which typically is an employee of a department in charge of managing the onboarding processes and the relationship with a given ecosystem. The Verifiable Credential includes a description of the actual powers that are being delegated (the required ones have to be defined by the ecosystem). The Verifiable Credential is sealed with the certificate of the LE. This VC is then called a LEARCredential and the person controlling it can use it to authenticate in the onboarding process and act as LEAR.            </li>
+            <li id='list_391.2'><b>Using the LER certificate</b>. The main difference with the above is that in this case the Verifiable Credential is signed with a LER certificate. This tends to be easier, especially in big companies because there are normally more than one LER depending on the company structure. As a special case, the LER can issue a LEARCredential to herself and then become a LEAR. This can be used when the LER wants to be the one performing the onboarding process.            </li>
+            <li id='list_391.3'><b>Using a trusted entity before onboarding</b>. When neither LE nor LER certificates are already available in the company, a TSP or other trusted entity accepted by the ecosystem could generate and sign the Verifiable Credential directly, instead of generating a LER certificate.            <div>
+                <p>The main difference with the previous scenarios is that the LEARCredential is signed by a trusted entity and that it has to be involved before the onboarding process starts, making the process somewhat more cumbersome and less self-service.
+                </p>
+            </div>
+            </li>
         </ul>
 
-        <p>The main difference with the previous scenarios is that the LEARCredential is signed by a trusted entity and that it has to be involved before the onboarding process starts, making the process somewhat more cumbersome and less self-service.
+        <p>The LEARCredential replaces its analog counterpart with a more efficient, machine-interpretable version. To illustrate, we continue using here the example of the LEAR for the Funding & tender portal of the EC, with the natural language letter that has to be signed: <a href="https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/temp-form/lev/lear-appointment-letter-and-lear-roles-and-duties_en.pdf">LEAR APPOINTMENT LETTER</a>.
         </p>
-        <p>In any case, the LEARCredential replaces its analog counterpart with a more efficient, machine-interpretable version. Following the example of the LEARCredential for the Funding & tender portal of the EC, the LEARCredential would replace the natural language letter that has to be signed: LEAR APPOINTMENT LETTER.
-        </p>
-        <p>The major problem here is to what level the natural language description of the roles and duties of the LEAR and delegation of those will be described in a formal language, versus simply embedding a secure pointer to somewhere where the actual natural language description is stored. This is an important subject for access control.
-        </p>
+
+        <section><h2>Claims about the subject</h2>
+
+            <p>The LEARCredential should include claims identifying the subject of the credential, the person who will act as LEAR. Each Data Space can define their own depending on their specific requirements. For the example for the EC portal, they should replace their analog counterparts in the first page of the letter, displayed here for illustration.
+            </p>
+
+            <figure id='lear-appointment-letter-1'>
+                <p><img src="images/lear-appointment-letter-1.png" alt="" />
+                </p>
+
+                <figcaption>LEAR subject identification data.
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+
+        <section><h2>Roles and duties</h2>
+
+            <p>The LEARCredential should specify the roles and duties of the LEAR. This can be done either embedding a machine-interpretable definition of the roles and duties in the credential, or with just a pointer to an external definition of the roles and duties in natural language, hosted somewhere else. The ideal approach is the first option, expressing the semantics with a proper machine-readable language, because this will allow automatic access control at the granularity of the individual sentences of that expression language.
+            </p>
+            <p>For illustration, the following figure shows some of the roles and duties in our LEAR example.
+            </p>
+
+            <figure id='lear-appointment-letter-2'>
+                <p><img src="images/lear-appointment-letter-2.png" alt="" />
+                </p>
+
+                <figcaption>LEAR roles and duties.
+                </figcaption>
+
+            </figure>
+
+            <p>The major problem here is to what level the natural language description of the roles and duties of the LEAR and delegation of those will be described in a formal language, versus simply embedding a secure pointer to somewhere where the actual natural language description is stored. This is an important subject for automating completely access control.
+            </p>
+        </section>
+
+
+        <section><h2>Further delegation of powers</h2>
+
+            <p>The LEAR has delegated powers from the legal representative of the legal person. Using a similar mechanism, the LEAR can further delegate a subset of those powers to one or more persons who will act as account administrators. This can be seen in section 4 of the letter for our example LEAR:
+            </p>
+
+            <figure id='lear-appointment-letter-3'>
+                <p><img src="images/lear-appointment-letter-3.png" alt="" />
+                </p>
+
+                <figcaption>Further delegation of LEAR roles and duties.
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+
+        <section><h2>Proving control of the LEAR Credential</h2>
+
+            <p>The person being appointed as a LEAR is identified as the subject of the credential. In order to later prove control of the credential, the issuer should embed as one of the claims a public key that corresponds to a private key only known by the LEAR and that will be used to sign challenges in the identification and access management systems of the Relying Party that wants to verify the LEAR Credential.
+            </p>
+            <p>If the LEAR has an eIDAS certificate, then the contents of that claim should be the certificate itself. Alternatively, the keypair can be generated in a secure and private way during the issuance process (which uses the OIDC4VCI standard).
+            </p>
+            <p>The DID identifier for the LEAR in the credential should use the `did:elsi` method (if the LEARCredential embeds an eIDAS certificate) or `did:key` if it does not.
+            </p>
+        </section>
+
+
+        <section><h2>Signing of the LEARCredential</h2>
+
+            <p>The LEARCredential must be signed by the issuer using either a LE certificate or a LER certificate, following the JAdES format specified in [[ETSI-JADES]].
+            </p>
+            <p>The issuer should be identified in the credential using the `did:elsi` method.
+            </p>
+        </section>
+
     </section>
 
 
     <section><h2>The identification and verification phase</h2>
 
-        <p>The onboarding service of a Data Space can act as a Relying Party and use the LEARCredential and the mechanisms for Identification and Authorisation described in this document to properly identify the legal person involved, the natural person performing the onboarding and that the natural person has the powers of representation.
+        <p>The onboarding service of a Data Space can act as a Relying Party and use the LEARCredential for authentication to identify the legal person involved and the natural person performing the onboarding and additionally verify the binding between both identities and that the natural person has the powers of representation.
         </p>
         <p>This can be done fully automated and without requiring a previous relationship among the new participant and the onboarding service, enabling self-onboarding.
         </p>
-        <p>Once this step is performed, the LEAR can provide additional documents (ideally as Verifiable Credentials) to complete the onboarding process or perform other required validations.
+        <p>Once this step is performed, the LEAR can provide additional documents (ideally as Verifiable Credentials) to complete the onboarding process or perform other required validations. For a Gaia-X compatible Data Space, the LEAR can provide credentials received from the <a href="https://compliance.gaia-x.eu/">Gaia-X Compliance Service</a>.
         </p>
     </section>
 
