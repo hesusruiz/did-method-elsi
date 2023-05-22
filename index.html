@@ -622,10 +622,12 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
     <p>For example, if there are natural persons, legal persons and machines in the same ecosystem, there is not any DID method that supports all of them while achieving high levels of regulatory compliance, privacy, scalability and decentralisation.
     </p>
     <p>This is also true of `did:elsi`, which is designed only for legal persons. Two other DID methods that may be appropriate for the other types of entities are:
-    <ul>
-    <li>`did:key` for natural persons
-    <li>`did:web` for machines (servers, sensors, ...)
     </p>
+    <ul>
+        <li id='list_469.1'>`did:key` for natural persons        </li>
+        <li id='list_469.2'>`did:web` for machines (servers, sensors, ...)        </li>
+    </ul>
+
     <p>The next section provides some reasoning on why `did:web` is not adequate for the same use cases as `did:elsi`.
     </p>
 
@@ -638,15 +640,15 @@ TNO: did:elsi:LEIXG-724500AZSGBRY55MNS59</pre>
         <p>One possibility could be to put an eIDAS certificate as one of the elements of the `"verificationMethod"` object in the DID document. But this has several problems:
         </p>
         <ul>
-            <li id='list_482.1'>The verifiable credentials should use the `did:web` identifier, with still no relationship to the legal person or its legal representative, unless a level of indirection is performed, accessing the web server when a verification of the credential is needed.            </li>
-            <li id='list_482.2'>Once this access to the web server is done, the same verification process as in `did:elsi` has to be performed, making the mechanism more complex without adding any real value. In essence, the entity has to prove control of the web server and also of the eIDAS certificate.            </li>
+            <li id='list_483.1'>The verifiable credentials should use the `did:web` identifier, with still no relationship to the legal person or its legal representative, unless a level of indirection is performed, accessing the web server when a verification of the credential is needed.            </li>
+            <li id='list_483.2'>Once this access to the web server is done, the same verification process as in `did:elsi` has to be performed, making the mechanism more complex without adding any real value. In essence, the entity has to prove control of the web server and also of the eIDAS certificate.            </li>
         </ul>
 
         <p>Furthermore, the need to access the web server to get the DID document and the embedded eIDAS certificate presents additional problems:
         </p>
         <ul>
-            <li id='list_488.1'>Less resiliency, as verification of a credential with a `did:web` identifier may fail if the web server is not available at that moment. This may be a big problem if the ecosystem includes many entities with low guarantees of availability of their web servers. Please note that signing the credential with the eIDAS certificate and including it in the credential but using `did:web` is just a convoluted implementation of the simpler `did:elsi`: in `did:elsi` you just sign the credential using the standard format (JAdES) and use the same identifier inside the certificate for the did identifier. No additional web server access is required.            </li>
-            <li id='list_488.2'>Less privacy, as the web server of the issuer of a credential has to be accessed every time that a credential is verified (a sensible caching could be used, but there is a risk that the DID document has been changed by the web server in the meantime). This privacy risk does not happen with `did:elsi` because no access to the web server is required. Given that root anchors for eIDAS certificates would be stored in the Trust Framework, privacy is very high with `did:elsi`.            </li>
+            <li id='list_489.1'>Less resiliency, as verification of a credential with a `did:web` identifier may fail if the web server is not available at that moment. This may be a big problem if the ecosystem includes many entities with low guarantees of availability of their web servers. Please note that signing the credential with the eIDAS certificate and including it in the credential but using `did:web` is just a convoluted implementation of the simpler `did:elsi`: in `did:elsi` you just sign the credential using the standard format (JAdES) and use the same identifier inside the certificate for the did identifier. No additional web server access is required.            </li>
+            <li id='list_489.2'>Less privacy, as the web server of the issuer of a credential has to be accessed every time that a credential is verified (a sensible caching could be used, but there is a risk that the DID document has been changed by the web server in the meantime). This privacy risk does not happen with `did:elsi` because no access to the web server is required. Given that root anchors for eIDAS certificates would be stored in the Trust Framework, privacy is very high with `did:elsi`.            </li>
         </ul>
 
     </section>

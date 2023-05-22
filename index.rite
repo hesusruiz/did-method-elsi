@@ -465,6 +465,7 @@ localBiblio:
     For example, if there are natural persons, legal persons and machines in the same ecosystem, there is not any DID method that supports all of them while achieving high levels of regulatory compliance, privacy, scalability and decentralisation.
 
     This is also true of `did:elsi`, which is designed only for legal persons. Two other DID methods that may be appropriate for the other types of entities are:
+    
     <ul>
         - `did:key` for natural persons
         - `did:web` for machines (servers, sensors, ...)
