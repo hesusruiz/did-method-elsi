@@ -35,7 +35,6 @@ github: "https://github.com/alastria/did-method-elsi"
 og_description: >
     A DID method for legal persons, maximising at the same time regulatory compliance, decentralisation and privacy for W3C Verifiable Credentials in the European Union.
 og_site_name: DID:ELSI Method
-og_image: "https://alastria.github.io/did-method-elsi/images/eu_trust_mark.jpg"
 
 localBiblio:
    "ETSI-CERTOVERVIEW":
@@ -231,7 +230,7 @@ localBiblio:
 
         This DID method does not support deactivation. Management of the DID lifecycle and associated information (e.g., cryptographic material) is performed according to the eIDAS regulation and its implementation.
 
-<section #didresolution>DID resolution and the verification of Verifiable Credentials
+<section .informative #didresolution>DID resolution and the verification of Verifiable Credentials
 
     The main use case for this DID method is to use `did:elsi` identifiers in W3C Verifiable Credentials signed using JAdES digital signatures [[ETSI-JADES]], which is a specification for JSON Web Electronic Signatures or Seals fulfilling the requirements of the European Union eIDAS Regulation for advanced electronic signatures and seals and regulatory requirements for many different services.
 
@@ -293,7 +292,7 @@ localBiblio:
             - Any relevant process in the real economy (agrifood, health, manufacturing, transportation, ...) imposes requirements on traceability of the supply chain, related among others with safety, health and consumer protection and the ability to react properly to emergencies. Information recorded and on custody by all businesses participating in the chain has to use the legally valid identifiers of each business.
 
 
-<section>Example: `did:elsi` and onboarding with Verifiable Credentials
+<section .informative>Example: `did:elsi` and onboarding with Verifiable Credentials
 
     To illustrate the usefulness of the `did:elsi` method, this section describes the relationship of the `did:elsi` method with a special type of Verifiable Credential that we call <b>LEARCredential</b> and which can be very useful to perform, among others, the onboarding process in ecosystems like Data Spaces with compliance to the eIDAS regulation.
 
@@ -458,6 +457,38 @@ localBiblio:
         This can be done fully automated and without requiring a previous relationship among the new participant and the onboarding service, enabling self-onboarding.
 
         Once this step is performed, the LEAR can provide additional documents (ideally as Verifiable Credentials) to complete the onboarding process or perform other required validations. For a Gaia-X compatible Data Space, the LEAR can provide credentials received from the <a href="https://compliance.gaia-x.eu/">Gaia-X Compliance Service</a>.
+
+<section .informative>Relationship with some other DID methods
+
+    It is difficult (if not impossible) to have a complex ecosystem like Data Spaces with only one DID method, especially if different types of entities coexist in the ecosystem. The "one-size-fits-all" rule does not apply in this case, as is also true in general.
+
+    For example, if there are natural persons, legal persons and machines in the same ecosystem, there is not any DID method that supports all of them while achieving high levels of regulatory compliance, privacy, scalability and decentralisation.
+
+    This is also true of `did:elsi`, which is designed only for legal persons. Two other DID methods that may be appropriate for the other types of entities are:
+    <ul>
+        - `did:key` for natural persons
+        - `did:web` for machines (servers, sensors, ...)
+
+    The next section provides some reasoning on why `did:web` is not adequate for the same use cases as `did:elsi`.
+
+    <section>Comparison with `did:web`
+
+        In the `did:web` method, the identifier is essentially a domain name that matches the common name used in the SSL/TLS certificate used in the web server hosting the associated DID document. For example, in the case of `https://gaia-x.eu/` the common name (CN) in the certificate is `CN = gaia-x.eu` so the corresponding did would be `did:web:gaia-x.eu` (assuming that no directories or subdirectories are used).
+
+        This is very convenient, but in most SSL/TLS certificates there is not any relationship between that identifier and the identifier issued by an official registrar that identifies the entity as a legal person or its legal representative, which is required in most types of electronic transactions in the internal market (for example in contract signing or eInvoices). This makes `did:web` not adequate for processes where you want to achieve legal certainty of substantial or high (according to eIDAS).
+
+        One possibility could be to put an eIDAS certificate as one of the elements of the `"verificationMethod"` object in the DID document. But this has several problems:
+
+        <ul>
+            - The verifiable credentials should use the `did:web` identifier, with still no relationship to the legal person or its legal representative, unless a level of indirection is performed, accessing the web server when a verification of the credential is needed.
+            - Once this access to the web server is done, the same verification process as in `did:elsi` has to be performed, making the mechanism more complex without adding any real value. In essence, the entity has to prove control of the web server and also of the eIDAS certificate.
+
+        Furthermore, the need to access the web server to get the DID document and the embedded eIDAS certificate presents additional problems:
+
+        <ul>
+            - Less resiliency, as verification of a credential with a `did:web` identifier may fail if the web server is not available at that moment. This may be a big problem if the ecosystem includes many entities with low guarantees of availability of their web servers. Please note that signing the credential with the eIDAS certificate and including it in the credential but using `did:web` is just a convoluted implementation of the simpler `did:elsi`: in `did:elsi` you just sign the credential using the standard format (JAdES) and use the same identifier inside the certificate for the did identifier. No additional web server access is required.
+            - Less privacy, as the web server of the issuer of a credential has to be accessed every time that a credential is verified (a sensible caching could be used, but there is a risk that the DID document has been changed by the web server in the meantime). This privacy risk does not happen with `did:elsi` because no access to the web server is required. Given that root anchors for eIDAS certificates would be stored in the Trust Framework, privacy is very high with `did:elsi`.
+
 
 
 <section id="references">
