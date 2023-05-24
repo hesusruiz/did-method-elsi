@@ -1,5 +1,5 @@
 ---
-title: DID ETSI Legal person Semantic Identifier Method Specification (did:elsi)
+title: Onboarding example with did:elsi and LEARCredential
 
 editors:
    - name: "Jesus Ruiz"
@@ -12,18 +12,6 @@ authors:
      email: "hesusruiz@gmail.com"
      company: "JesusRuiz"
      companyURL: "https://hesusruiz.github.io/hesusruiz"
-   - name: "Alejandro Nieto"
-     email: "alejandro.nieto@madisonmk.com"
-     company: "DigitelTS"
-     companyURL: "https://digitelts.es/"
-   - name: "Alejandro Alfonso"
-     email: "alejandro.alfonso@madisonmk.com"
-     company: "DigitelTS"
-     companyURL: "https://digitelts.es/"
-   - name: "Oriol Canades"
-     email: "oriol.canades@in2.es"
-     company: "IN2"
-     companyURL: "https://www.in2.es/"
 
 copyright: >
    Copyright © 2023 the document editors/authors. Text is available under the
@@ -72,31 +60,96 @@ localBiblio:
 ---
 
 <section #abstract>
-    This is a DID method for <b>legal persons</b>, bridging the world of the eIDAS regulation with the world of W3C Verifiable Credentials, maximising at the same time regulatory compliance, decentralisation and privacy.
-
-    The main use case of the `did:elsi` method is to enable usage of W3C Verifiable Credentials in processes that require high levels of <b>legal certainty, scalability, privacy and eIDAS compliance</b>. It is a good complement to `did:web` in ecosystems like Data Spaces with machine-to-machine interactions, but where some processes can not use `did:web` because they require high levels of legal certainty and compliance that can not be achieved with `did:web` (e.g., onboarding or contract signing processes).
+    This is an example of an onboarding process performed with the LEARCredential using the `did:elsi` method.
     
-    The `did:elsi` method facilitates the use of <a href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf">JAdES digital signatures</a> with Verifiable Credentials, and so it can be used to meet the requirements of <b>electronic signatures, advanced electronic signatures, qualified electronic signatures, electronic seals, advanced electronic seals, and qualified electronic seals</b> as defined in Regulation (EU) No 910/2014 (eIDAS).
-
-    <aside .note>
-        <b>Natural persons MUST not</b> use this DID method, or for that matter, any DID method that registers anything related to personal information in any type of Verifiable Registry or shared data store.
-
-        A good DID method for natural persons is `did:key` which is a perfect complement to `did:elsi` to build ecosystems that maximise privacy, regulatory compliance, safety, scalability, and decentralisation. 
-
-    This DID method is highly decentralised because any legal person than can operate in the digital economy and that can digitally sign a document using an advanced or qualified signature or seal according to eIDAS (like an invoice or a contract) has automatically a DID identifier under the `did:elsi` method without any further action and without any intervention by any third party. If the legal person can not engage in electronic transactions, it must perform whatever process is legally required in its jurisdiction to do so, before it can use this DID method. No third parties, apart from the ones legally required by its jurisdiction, are involved in this DID method.
-
-    The identifiers in this DID method are based on the unique identifiers that are already used in the eIDAS certificates that comply to the relevant ETSI standards for electronic signatures and seals. This is in contrast to most other did methods, which invent or use identifiers and mechanisms that are not well integrated with the legal framework and which are not in general legally recognised in the EU for economic transactions (e.g., they can not be used as legal person identifiers in electronic invoices across the EU).
-
-    With this approach, SSI ecosystems can use W3C Verifiable Credentials that have the same legal status as any other document which uses advanced or qualified electronic signatures and seals, and so can replace easily other documents in less efficient formats, like signed PDFs.
-
 <section>Introduction
 
-    <section>Preface
 
-        The `elsi` DID method specification conforms to the requirements specified in the Decentralized Identifiers v1.0 Specification [[DID-CORE]]. For more information about DIDs and DID method specifications, please also see the [[?DID-PRIMER]]
+    <section>Participants
 
-    <section #conformance>
-        <!-- This section is filled automatically by ReSpec. -->
+        Here we introduce the actors of the reference use case we are going to have. There will be an Air Quality App
+        provider who wishes to offer this app in DOME and a given customer (e.g., integrator for a smart city) discovering
+        and procuring the app.
+
+        <section #participant>GoodAir, the company that will be onboarded participant
+
+            The new participant is a business providing an Air Quality Monitoring application as a service. The business is called GoodAir and it operates the application, which receives data from a set of sensors that may or may not be the property of GoodAir. The sensors must have received a certification to be able to operate and send data to the GoodAir application.
+
+            The company is registered in the tax agency and business registry of Spain with VAT number VATES-12345678
+
+        <section>COO (Chief Operating Officer) of GoodAir
+
+            The GoodAir company is small and the only person that can sign contracts on behalf of the company is the COO (Chief Operating Officer). The COO is a legal representative of the company and she is registered as so in the business registry of Spain.
+
+            The COO has a certificate for electronic signatures issued by one of the TSPs in Spain enabling the COO to perform electronic qualified signatures as legal representative of GoodAir, instead of doing them manually.
+
+            The X.509 certificate of the COO has the following contents in the `Subject` field (the example below is derived from a real certificate but with the identifiers modified to be an example):
+
+            <x-code>
+                cn=56565656V Jesus Ruiz
+                serialNumber=56565656V
+                givenName=Jesus
+                sn=Ruiz
+                2.5.4.97=VATES-12345678
+                o=GoodAir
+                c=ES
+                2.5.4.13=Notary:Juan Lopez/Protocol Num:7172/Date:07-06-2021
+
+            The above set of fields bind the legal identity of the COO with the identity of the business:
+
+            <ul>
+                - `serialNumber` is the unique number recognized by the Spanish Government for spanish citizens (called NIF).
+                - `2.5.4.97` is the <a href="https://oidref.com/2.5.4.97">official OID for `organizationIdentifier`</a>. The contents of this field in the example certificate is the unique identifier for the legal person GoodAir.
+
+            Before issuing a certificate like the above, the TSP has to perform some validations to ensure that in the official source of truth (the business registry of Spain in this case) there is already registered information that states that the COO has indeed powers to act on behalf of GoodAir as a legal representative.
+
+        <section>RealTruth, the TSP (Trust Service Provider)
+
+            RealTruth is an EU TSP,  which appears in the TL (Trusted List) maintained by the German Government (<https://tl.bundesnetzagentur.de/TL-DE.XML>).
+            
+            RealTruth is a TSP based in Germany but operates in most of the countries of the EU and so being able to provide Trust Services across many countries, including Spain.
+
+            As all TSPs in the TLs of the Member States, its entry in the TL includes one or more "Services" entries which describe the Trust Services provided by the TSP.
+
+            A TSP can have one Service issuing certificates for signatures, another service issuing certificates for seals, another service for timestamping, etc.
+
+            The regulator approves or suspends each service from a TSP individually, and the services are the root anchor for a given trust environment.
+
+            In our case, the entry for RealTruth in the TL includes a "<TSPService>" entry, and inside it the "<ServiceDigitalIdentity>" entry includes a DER-encoded certificate specifying the digital identity of the root anchor for that trust domain. The certificate for the Service has in the Subject field:
+
+            <x-code>
+                2.5.4.97 = VATDE-170173453
+                CN = DRV QC 11 MA CA 2017ca
+                OU = QC 11 Mitarbeiter CA
+                O = Deutsche Rentenversicherung Westfalen
+                C = DE
+
+            Which in the `organizationIdentifier` field (OID 2.5.4.97) specifies the unique organisation identifier assigned by the German regulatory authority to the TSP: VATDE-170173453.
+
+            RealTruth provides `Legal Person Representative Certificates` which are qualified in accordance with Regulation (EU) No. 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market.
+
+            The certification policies of RealTruth includes the following sentences:
+
+
+            The Registration Authority must verify the following information in order to authenticate the identity of the organisation:
+                <ul>
+                    - The data concerning the business name or corporate name of the organisation.
+                    - The data relating to the constitution and legal status of the subscriber.
+                    - <b>The data concerning the extent and validity of the powers of representation of the applicant.</b>
+                    - The data concerning the tax identification code of the organisation or equivalent code used in the country to whose legislation the subscriber is subject.
+
+
+            In accordance to the policies, RealTruth made those validations when issuing the certificate to the COO, in such a way that the Relying Parties verifying the certificate can have a high level of trust in the assertion that the natural person identified in the certificate (with Spanish ID of 56565656V) is a legal representative of he GoodAir company (organizationIdentifier VATES-12345678).
+
+        <section>Administrative employee of GoodAir (GoodAir Admin)
+
+            This is an employee of the central administration department of GoodAir, who is going to be formally nominated to manage the onboarding process of GoodAir in the Data Space organisation and of the Portal and thus bear the final responsibility for all your actions in the Portal. Once validated, they will be responsible for:
+
+            keeping an overview of all the proposals/projects/contracts your organisation is involved in
+            managing all the legal and financial information about your organisation
+            managing the access rights at organisation-level (and read-only access at project-level)
+            appointing the persons which will be able to electronically sign grants/contracts (Legal Signatories — LSIGNs) and cost claims/invoices (Financial Signatories — FSIGNs).
+
 
     <section>Examples
 
@@ -104,7 +157,7 @@ localBiblio:
 
         <ul>
             - Gaia-X: `did:elsi:VATBE-0762747721`
-            - International Data Spaces Association: `did:elsi:VATDE-325984196`
+            - International Data Spaces: `did:elsi:VATDE-325984196`
             - Alastria: `did:elsi:VATES-G87936159`
             - IN2: `did:elsi:VATES-B60645900`
             - Digitel TS: `did:elsi:VATES-B47447560`
@@ -178,7 +231,7 @@ localBiblio:
 
         <pre .example title="Example ELSI Method DIDs">
             Gaia-X: did:elsi:VATBE-0762747721
-            International Data Spaces Association: did:elsi:VATDE-325984196
+            International Data Spaces: did:elsi:VATDE-325984196
             Alastria: did:elsi:VATES-G87936159
             IN2: did:elsi:VATES-B60645900
             Digitel TS: did:elsi:VATES-B47447560
